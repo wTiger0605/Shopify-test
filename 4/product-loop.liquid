@@ -1,0 +1,10 @@
+{%- for product in collection.products -%}
+  {% if product.title == "Blue T-Shirt" %}
+    {% assign id = product.id %}
+    {% assign title = product.title %}
+    {% assign handle = product.handle %}
+    {% assign price = product.price %}
+    {% assign url = product.url %}
+    {% assign images = product.images %}
+  {% endif %}
+{%- endfor -%}

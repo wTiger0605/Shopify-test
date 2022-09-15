@@ -1,0 +1,54 @@
+{% comment %}
+** Collections - default view **
+- Collection template
+{% endcomment %}
+
+{% if section.settings.featured_collection_image %}
+  <header class="banner center page_banner>
+      {% if collection.image %}
+        {% assign image = collection.image %}
+      {%- elsif section.settings.image -%}
+        {% assign image = section.settings.image %}
+      {%- else %}
+        {% assign image = collection.products.first.featured_image %}
+      {% endif %}
+
+      {% include 'image-element', image: image, alt: collection.title %}
+      {% comment %} image-element is a snippet to draw the image selected {% endcomment %}
+  </header>
+{% endif %}
+
+<div class="container">
+  {% comment %}
+  - show collections
+  {% paginate collection.products by section.settings.pagination_limit %}
+  {% endpaginate %}
+  {% endcomment %}
+</div>
+
+{% schema %}
+
+{
+  "name": "Collection",
+  "class": "collection-template-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner image"
+    },
+    {
+      "type": "checkbox",
+      "id": "featured_collection_image",
+      "label": "Show top banner image",
+      "info": "The collection's featured image will be used by default. Optionally upload a banner image as a fallback."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner image",
+      "info": "1800 x 1000px recommended"
+    }
+  ]
+}
+
+{% endschema %}

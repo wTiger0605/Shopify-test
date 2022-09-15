@@ -1,0 +1,40 @@
+{% comment %}
+** Text line section - custom view **
+{% endcomment %}
+
+<section class="container text-line-section">
+  {% if section.settings.text-line != blank %}
+  <h2>{{section.settings.text-line}}</h2>
+</div>
+
+<style>
+  {% if section.settings.text-line != blank %}
+    .text-line-section {
+      display: flex;
+    }
+    .text-line-section h2 {
+      margin: auto;
+    }
+  {% endif %}
+</style>
+
+{% schema %}
+
+{
+  "name": "Page | Text Line",
+  "class": "text-line-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text-line",
+      "label": "Text Line"
+    }
+  ],
+  "default": {
+    "settings": {
+      "title": "Editable Text Line"
+    }
+  }
+}
+
+{% endschema %}
